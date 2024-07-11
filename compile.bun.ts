@@ -1,6 +1,8 @@
-import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import { Glob } from "bun";
 import codes from "./codes.json";
+
+GlobalFonts.registerFromPath("./fonts/Arial_Bold.ttf");
 
 const generic = await loadImage("source_img/generic.png");
 
