@@ -17,8 +17,8 @@ await Promise.all(
         const glob = new Glob(`source_img/${codeInfo.code}.*`);
         const file = (await glob.scan().next()).value ?? null;
 
-        const WIDTH = 800;
-        const HEIGHT = 800;
+        const WIDTH = 512;
+        const HEIGHT = 512;
 
         const canvas = createCanvas(WIDTH, HEIGHT);
         const ctx = canvas.getContext("2d");
@@ -33,7 +33,7 @@ await Promise.all(
         const imgHeight = img.height;
 
         const PADDING = 10;
-        const BOTTOM_PADDING = 160;
+        const BOTTOM_PADDING = 125;
 
         // The area you want to fill
         const targetWidth = WIDTH - PADDING * 2;
@@ -69,12 +69,12 @@ await Promise.all(
         ctx.font = "bold 80px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(codeInfo.code, WIDTH / 2, HEIGHT - 90);
+        ctx.fillText(codeInfo.code, WIDTH / 2, HEIGHT - 65);
 
-        ctx.font = "bold 40px Arial";
+        ctx.font = "bold 30px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(codeInfo.phrase, WIDTH / 2, HEIGHT - 30);
+        ctx.fillText(codeInfo.phrase, WIDTH / 2, HEIGHT - 20);
 
         // Save image
         const out = `output_img/${codeInfo.code}.png`;
