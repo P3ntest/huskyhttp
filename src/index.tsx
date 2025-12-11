@@ -38,8 +38,8 @@ const app = new Elysia()
       const returnCode = codeData ? codeData.code : "404";
       const returnCodeData = codes.find((c) => c.code == returnCode);
 
-      if (codeParam.endsWith(".png")) {
-        return file(`./output_img/${returnCode}.png`);
+      if (codeParam.endsWith(".webp")) {
+        return file(`./output_img/${returnCode}.webp`);
       }
 
       return (

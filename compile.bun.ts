@@ -77,8 +77,8 @@ await Promise.all(
         ctx.fillText(codeInfo.phrase, WIDTH / 2, HEIGHT - 20);
 
         // Save image
-        const out = `output_img/${codeInfo.code}.png`;
-        Bun.write(out, canvas.toBuffer("image/png"));
+        const out = `output_img/${codeInfo.code}.webp`;
+        Bun.write(out, canvas.toBuffer("image/webp"));
         console.log(`Generated ${out}`);
         return resolve();
       })

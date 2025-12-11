@@ -43,8 +43,8 @@ export function CodePage({
   return (
     <PageLayout>
       <div class="code-page">
-        <a href={`${code}.png`}>
-          <img src={`${code}.png`} width={400} alt="" />
+        <a href={`${code}.webp`}>
+          <img src={`${code}.webp`} width={400} alt="" />
         </a>
         <p class="code-title">{code}</p>
         <p class="code-phrase">{phrase}</p>
@@ -78,7 +78,7 @@ export function AllCodes({
       <div class="all-codes-page">
         {codes.map((codeData) => (
           <a href={`/${codeData.code}`}>
-            <img src={`/${codeData.code}.png`} width={300} alt="" />
+            <img src={`/${codeData.code}.webp`} width={300} alt="" />
           </a>
         ))}
       </div>
