@@ -2,6 +2,10 @@
   "name": "huskyhttp",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build:images": "bun run compile.bun.ts",
+    "dev": "bun run --watch src/index.tsx"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -9,6 +13,10 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.53"
+    "@elysiajs/html": "^1.4.0",
+    "@elysiajs/static": "^1.4.7",
+    "@napi-rs/canvas": "^0.1.53",
+    "elysia": "^1.4.16",
+    "zod": "^4.1.13"
   }
 }

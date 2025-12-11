@@ -29,15 +29,41 @@ await Promise.all(
         // Draw image
         const img = file ? await loadImage(file) : generic;
 
+        const imgWidth = img.width;
+        const imgHeight = img.height;
+
         const PADDING = 10;
         const BOTTOM_PADDING = 160;
-        ctx.drawImage(
-          img,
-          PADDING,
-          PADDING,
-          WIDTH - PADDING * 2,
-          HEIGHT - PADDING * 2 - BOTTOM_PADDING
+
+        // The area you want to fill
+        const targetWidth = WIDTH - PADDING * 2;
+        const targetHeight = HEIGHT - PADDING * 2 - BOTTOM_PADDING;
+
+        // 1. Calculate the scale factor to COVER the area
+        // CHANGE: Use Math.max instead of Math.min
+        const scale = Math.max(
+          targetWidth / imgWidth,
+          targetHeight / imgHeight
         );
+
+        // 2. Calculate the new width and height
+        const w = imgWidth * scale;
+        const h = imgHeight * scale;
+
+        // 3. Calculate the X and Y positions to center the image
+        // This will result in negative offsets for the dimension that is larger than the target
+        const x = PADDING + (targetWidth - w) / 2;
+        const y = PADDING + (targetHeight - h) / 2;
+
+        ctx.save();
+        // Create a clipping region
+        ctx.beginPath();
+        ctx.rect(PADDING, PADDING, targetWidth, targetHeight);
+        ctx.clip();
+
+        ctx.drawImage(img, x, y, w, h);
+
+        ctx.restore();
 
         // Draw text
         ctx.font = "bold 80px Arial";

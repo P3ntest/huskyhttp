@@ -6,4 +6,4 @@ COPY . .
 RUN bun install
 RUN bun run compile.bun.ts
 
-CMD ["bun", "server.ts"]
+CMD ["bun", "src/index.tsx"]
