@@ -17,12 +17,6 @@ function parseCodeFromURL(code: string) {
 }
 
 const app = new Elysia()
-  .macro("cache", {
-    resolve({ set: { headers } }) {
-      // set cache for 7 days
-      headers["Cache-Control"] = "public, max-age=604800, immutable";
-    },
-  })
   .use(staticPlugin())
   .use(html())
   .get("/", () => {
@@ -55,7 +49,6 @@ const app = new Elysia()
       params: t.Object({
         code: t.String(),
       }),
-      cache: true,
     }
   )
   .listen(3000);
